@@ -4,7 +4,7 @@ import '../App.css';
 
 function App() {
   const [data, setData] = useState(null);
-    const jokeSearchQuery = 'dog';
+    const [jokeSearchQuery, setJokeSearchQuery] = useState('');
 
   const url = `https://icanhazdadjoke.com/search?term=${jokeSearchQuery}`;
 
@@ -17,10 +17,16 @@ function App() {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [jokeSearchQuery, url]);
 
   return (
     <div className="App">
+        <input 
+          type="text" 
+          placeholder="Search for a joke" 
+          value={jokeSearchQuery} 
+          onChange={(e) => setJokeSearchQuery(e.target.value)} 
+        />
       <div>{data ? <pre>{JSON.stringify(data, null, 2)}</pre> : 'Loading...'}</div>
     </div>
   );
