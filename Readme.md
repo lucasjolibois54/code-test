@@ -62,7 +62,7 @@ A React and TypeScript application that uses the Web Speech API to provide a voi
 - npm or yarn
 
 
-## Installation
+## Installation - how to run the project
 
 #### 1. Clone the Repository
 ```
@@ -85,3 +85,133 @@ yarn install
 ```
 npm run dev
 ```
+
+
+
+
+
+## My setup process
+
+#### 1. Initialize the Project
+
+I started by creating a Vite project configured for React and TypeScript:
+
+```bash
+npm create vite@latest my-app --template react-ts
+cd my-app
+```
+
+---
+
+#### 2. Install Dependencies
+
+Once the project was initialized, I installed the necessary dependencies:
+
+```bash
+npm install
+```
+
+---
+
+#### 3. Set Up Tailwind CSS
+
+To style the application, I added and configured **Tailwind CSS** as follows:
+
+1. **Install Tailwind CSS and its dependencies:**
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   ```
+
+2. **Initialize Tailwind CSS configuration:**
+   ```bash
+   npx tailwindcss init
+   ```
+
+3. **Update the `tailwind.config.cjs` file:**
+   This step ensures Tailwind processes all the relevant files for styling:
+   ```javascript
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+   ```
+
+4. **Add Tailwind directives to the CSS file:**
+   In the `src/index.css` file, I added the following lines:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+---
+
+#### 4. Add Routing
+
+To enable navigation between pages, I installed `react-router-dom`:
+
+```bash
+npm install react-router-dom
+```
+
+Then, I created a simple routing structure:
+
+1. **Created the `src/pages` directory** with the following file:
+   `src/pages/Home.tsx`:
+     ```tsx
+     export default function Home() {
+       return <h1 className="text-2xl font-bold">Home Page!</h1>;
+     }
+     ```
+
+2. **Updated the `src/app.tsx` file** to include routing:
+   ```tsx
+   import {Routes, Route} from 'react-router-dom'
+   import Home from './pages/Home';
+   import './App.css';
+
+   function App() {
+   return (
+    <>
+    <Routes>
+        <Route index element={<Home/>}/>
+    </Routes>
+    </>
+   );
+   }
+
+   export default App;
+   ```
+
+3. **Updated the `src/main.tsx` file** to include routing:
+    ```tsx
+   import { StrictMode } from 'react'
+    import { createRoot } from 'react-dom/client'
+    import './index.css'
+    import App from './App.tsx'
+    import { BrowserRouter } from 'react-router-dom'
+
+    createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+    </StrictMode>,
+    )
+
+
+---
+
+#### 5. Run the Project
+
+Finally, I started the development server to test the project:
+
+```bash
+npm run dev
+```
+
+The app is accessible at [http://localhost:5173](http://localhost:5173).
