@@ -273,6 +273,19 @@ function App() {
               </div>
             ))}
           </div>
+          <div className='py-2 text-center md:hidden'>
+          <button
+                onClick={listening ? stopListening : startListening}
+                disabled={loading}
+                className={`w-[95%] py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  loading || listening
+                    ? 'bg-[#e4e4e7] text-[#71717a] cursor-not-allowed'
+                    : 'bg-[#000000] text-white hover:bg-[#333333]'
+                }`}
+              >
+                {listening ? 'Listening...' : 'Speak'}
+              </button>
+              </div>
         </div>
       </div>
     </div>
