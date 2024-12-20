@@ -216,7 +216,7 @@ function App() {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="w-full py-2 px-4 bg-[#e4e4e7] text-[#18181b] rounded-md text-sm font-medium hover:bg-[#d4d4d8] transition-colors duration-200"
           >
-            {sidebarOpen ? "Close Transcript" : "View Transcript"}
+            {sidebarOpen ? "Close Transcript History" : "View Transcript History"}
           </button>
         </div>
       </div>
